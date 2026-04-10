@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agrofuture | Próximamente</title>
+    <!-- Iconos FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <style>
+        /* --- TIPOGRAFÍA PERSONALIZADA --- */
+        @font-face {
+            font-family: 'Geomanist';
+            src: url('geomanist-bold.ttf') format('truetype');
+            font-weight: bold;
+            font-style: normal;
+        }
+
+        /* --- PALETA DE COLORES Y VARIABLES --- */
+        :root {
+            --agro-green-light: #6CC24A; /* Verde vibrante de la paleta */
+            --agro-green-dark: #12472B;  /* Verde oscuro de la paleta */
+            --bg-dark: #0A1118;          /* Fondo oscuro profundo */
+            --text-light: #E2E8F0;
+        }
+
+        /* --- RESET Y ESTILOS BASE --- */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            background-color: var(--bg-dark);
+            font-family: 'Geomanist', sans-serif;
+            color: #FFFFFF;
+            line-height: 1.5;
+        }
+
+        /* --- CONTENEDOR PRINCIPAL RESPONSIVE --- */
+        .main-container {
+            min-height: 100vh; /* Ocupa al menos toda la altura de la pantalla */
+            width: 100%;
+            position: relative;
+            overflow-x: hidden; /* Evita scroll horizontal */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 20px; /* Espacio interno para pantallas pequeñas */
+        }
+
+        /* --- FONDO DINÁMICO --- */
+        .background-overlay {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            /* Degradado usando los colores oscuros de la marca */
+            background-image: linear-gradient(135deg, var(--bg-dark) 0%, #101B24 100%);
+            z-index: -2;
+        }
+
+        /* Mancha de luz verde abstracta */
+        .green-glow {
+            position: absolute;
+            width: 60vw;
+            height: 60vw;
+            max-width: 800px;
+            max-height: 800px;
+            background: radial-gradient(circle, rgba(108, 194, 74, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+            top: -10%;
+            right: -10%;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        /* --- ÁREA DE CONTENIDO --- */
+        .content-area {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            max-width: 900px;
+            width: 100%;
+        }
+
+        /* --- LOGO --- */
+        .logo-wrapper {
+            margin-bottom: 40px;
+        }
+
+        .logo-img {
+            /* Ajusta este ancho máximo según el tamaño real de tu logo */
+            max-width: 300px; 
+            height: auto;
+            display: block;
+            margin: 0 auto;
+            border-radius: 12px; /* Bordes suaves por si la imagen tiene fondo */
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3); /* Sombra elegante */
+        }
+
+        /* --- INSIGNIA DE ESTADO --- */
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            padding: 10px 20px;
+            background: rgba(108, 194, 74, 0.15);
+            border: 1px solid var(--agro-green-light);
+            border-radius: 100px;
+            color: var(--agro-green-light);
+            font-weight: bold;
+            font-size: 14px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 30px;
+        }
+
+        .status-badge i {
+            margin-right: 10px;
+            font-size: 8px;
+            animation: pulse 2s infinite;
+        }
+
+        /* --- TÍTULOS --- */
+        .main-title {
+            /* Tamaño responsive usando 'clamp' */
+            font-size: clamp(40px, 8vw, 84px); 
+            font-weight: bold;
+            line-height: 1.1;
+            margin-bottom: 25px;
+            /* Degradado de texto blanco a verde vibrante */
+            background: linear-gradient(to right bottom, #FFFFFF 30%, var(--agro-green-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .subtitle {
+            font-size: clamp(18px, 3vw, 24px);
+            font-weight: 300;
+            line-height: 1.6;
+            color: var(--text-light);
+            margin-bottom: 50px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* --- FOOTER --- */
+        .footer-info {
+            margin-top: auto; /* Empuja el footer hacia abajo si hay espacio */
+            padding-top: 40px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px 30px;
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 13px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* --- ANIMACIONES --- */
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.4; }
+            100% { opacity: 1; }
+        }
+
+        /* Ajustes para móviles pequeños */
+        @media (max-height: 700px) {
+            .main-container {
+                justify-content: flex-start; /* Alinea arriba si la pantalla es muy baja */
+            }
+            .logo-wrapper { margin-bottom: 20px; }
+            .status-badge { margin-bottom: 20px; }
+            .subtitle { margin-bottom: 30px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="main-container">
+        <!-- Elementos de fondo -->
+        <div class="background-overlay"></div>
+        <div class="green-glow"></div>
+        
+        <div class="content-area">
+            <!-- SECCIÓN DEL LOGO -->
+            <div class="logo-wrapper">
+                <!-- 
+                  Se ha actualizado con el nombre exacto de tu archivo.
+                -->
+                <img src="logo agro future paletas.jpg.jpg" alt="Agrofuture Logo" class="logo-img">
+            </div>
+
+            <!-- Insignia de estado -->
+            <div class="status-badge">
+                <i class="fa-solid fa-circle"></i> En Mantenimiento
+            </div>
+
+            <!-- Títulos -->
+            <h1 class="main-title">Sembrando el futuro de la tecnología agrícola.</h1>
+            
+            <p class="subtitle">
+                Estamos optimizando nuestra plataforma para ofrecerte soluciones de vanguardia en agrotecnología. Nuestra nueva experiencia digital estará lista pronto.
+            </p>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer-info">
+            <span>© 2026 AGROFUTURE</span>
+            <span>|</span>
+            <span>TECNOLOGÍA SUSTENTABLE</span>
+        </div>
+    </div>
+
+</body>
+</html>
